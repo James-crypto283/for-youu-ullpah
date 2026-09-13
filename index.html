@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You Ulpah 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #fff1f7, #f6a9c9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #633d50;
+}
+
+.card {
+  width: 100%;
+  max-width: 620px;
+  min-height: 700px;
+  border-radius: 45px;
+  overflow: hidden;
+  position: relative;
+  padding: 55px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 35px rgba(180,80,130,.2);
+  transition: background-image .6s ease;
+}
+
+/* Background foto berganti */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,240,248,.78), rgba(255,240,248,.78)),
+    var(--bg-image) center / cover no-repeat;
+  z-index: 0;
+  transition: opacity .5s ease;
+}
+
+.content,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.icons {
+  font-size: 35px;
+  color: #df79aa;
+  margin-bottom: 55px;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.message {
+  font-size: 21px;
+  line-height: 1.8;
+  margin-top: 35px;
+}
+
+button {
+  margin-top: 40px;
+  border: none;
+  background: #ee82b2;
+  color: white;
+  font-size: 21px;
+  padding: 15px 60px;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(230,100,160,.25);
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.footer {
+  background: #07343d;
+  color: white;
+  padding: 15px 22px;
+  border-radius: 35px;
+  font-size: 15px;
+}
+
+.fade {
+  animation: fade .5s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+  <div class="content fade" id="page">
+    <div class="icons">♡ ✦ ♡</div>
+
+    <div class="title">for you ulpah</div>
+
+    <div class="message">
+      Aku mau jujur aja.<br>
+      Sejak sering ngobrol sama kamu,<br>
+      aku ngerasa nyaman.
+    </div>
+
+    <button onclick="nextPage()">OK 💗</button>
+  </div>
+
+  <div class="footer">✦ Powered by Netlify</div>
+
+</div>
+
+<script>
+const photos = [
+  "foto1.jpg",
+  "foto2.jpg",
+  "foto3.jpg",
+  "foto4.jpg"
+];
+
+let page = 0;
+let photoIndex = 0;
+
+const messages = [
+  `
+  <div class="icons">♡ ✦ ♡</div>
+  <div class="title">for you ulpah</div>
+  <div class="message">
+    Aku mau jujur aja.<br>
+    Sejak sering ngobrol sama kamu,<br>
+    aku ngerasa nyaman.<br><br>
+    Aku suka cara kamu mikir dan sikap kamu.<br>
+    Kalau boleh, aku pengen deket sama kamu<br>
+    lebih dari sekedar teman.<br><br>
+    Gimana menurut kamu?
+  </div>
+  <button onclick="nextPage()">OK 💗</button>
+  `,
+
+  `
+  <div class="icons">♡ ✦ ♡</div>
+  <div class="message">
+    Aku udah mikir lama sebelum ngomong ini.<br><br>
+    Aku suka sama kamu.<br>
+    Bukan cuma karena paras,<br>
+    tapi karena kamu orangnya dewasa<br>
+    dan bikin aku ngerasa tenang.<br><br>
+    Aku gak minta jawaban sekarang,<br>
+    aku cuma pengen kamu tau perasaanku.
+  </div>
+  <button onclick="nextPage()">OK 💗</button>
+  `,
+
+  `
+  <div class="icons">♡ ✦ ♡</div>
+  <div class="message">
+    Aku nyaman banget kalo udah cerita sama kamu.<br><br>
+    Lama-lama nyaman itu berubah jadi sayang.<br><br>
+    Aku gak tau kamu ngerasain hal yang sama<br>
+    atau enggak, tapi aku pengen nyoba.<br><br>
+    Boleh gak aku jadi orang yang lebih deket<br>
+    buat kamu?
+  </div>
+  <button onclick="nextPage()">OK 💗</button>
+  `,
+
+  `
+  <div class="icons">♡ ✦ ♡</div>
+  <div class="message">
+    Kalau kamu juga ngerasa sama,<br>
+    kita coba jalanin pelan-pelan aja 💗
+  </div>
+  <button onclick="nextPage()">OK 💗</button>
+  `,
+
+  `
+  <div class="icons">♡ ✦ ♡</div>
+  <div class="title">Terima kasih, Ulpah 💗</div>
+  <div class="message">
+    Apapun jawaban kamu,<br>
+    aku senang sudah bisa jujur<br>
+    tentang perasaanku.
+  </div>
+  `
+];
+
+const card = document.getElementById("card");
+const pageElement = document.getElementById("page");
+
+// Foto pertama saat website dibuka
+card.style.setProperty("--bg-image", `url("${photos[0]}")`);
+
+function nextPage() {
+  // Ganti halaman pesan
+  if (page < messages.length - 1) {
+    page++;
+  }
+
+  // Ganti foto setiap klik
+  photoIndex++;
+
+  if (photoIndex >= photos.length) {
+    photoIndex = 0;
+  }
+
+  card.style.setProperty(
+    "--bg-image",
+    `url("${photos[photoIndex]}")`
+  );
+
+  // Animasi pergantian teks
+  pageElement.classList.remove("fade");
+  void pageElement.offsetWidth;
+  pageElement.classList.add("fade");
+
+  pageElement.innerHTML = messages[page];
+}
+</script>
+
+</body>
+</html>
