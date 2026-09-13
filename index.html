@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You Ulfahh 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef6, #ffc4dc);
+  color: #6b2145;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 92%;
+  max-width: 650px;
+  margin: auto;
+  padding: 35px 0;
+  text-align: center;
+}
+
+.cover {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  animation: muncul 1.5s ease;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+button {
+  border: none;
+  padding: 14px 25px;
+  border-radius: 30px;
+  background: #e94f93;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #d879a5;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+  background: #d9367d;
+}
+
+#content {
+  display: none;
+}
+
+.card {
+  background: rgba(255,255,255,0.78);
+  border-radius: 22px;
+  padding: 22px;
+  margin: 25px 0;
+  box-shadow: 0 8px 25px rgba(170, 65, 110, 0.18);
+  animation: naik 1s ease;
+}
+
+.card img {
+  width: 150px;
+  max-width: 80%;
+  border-radius: 18px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  line-height: 1.8;
+  font-size: 15px;
+  margin: 0;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.footer {
+  margin: 35px 0;
+  font-size: 15px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  animation: terbang 7s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 55%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 80%; animation-delay: 1s; }
+
+@keyframes terbang {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes naik {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 29px;
+  }
+
+  .gallery img {
+    height: 145px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="heart">💗</div>
+<div class="heart">💕</div>
+<div class="heart">💖</div>
+<div class="heart">💘</div>
+
+<div class="container">
+
+  <section class="cover" id="cover">
+    <h1>for you ulfahh 💗</h1>
+    <p class="subtitle">Ada sesuatu yang mau aku sampaikan...</p>
+    <button onclick="bukaPesan()">Buka pesan 💌</button>
+  </section>
+
+  <section id="content">
+
+    <h1>For You Ulfahh 💗</h1>
+    <p class="subtitle">Baca pelan-pelan ya...</p>
+
+    <audio id="music" src="music.mp3" loop></audio>
+
+    <button onclick="putarMusik()" id="musicButton">
+      🎵 Putar Musik
+    </button>
+
+    <div class="card">
+      <img src="stiker1.gif" alt="Stiker pertama">
+      <p>
+        aku mau jujur aja. Sejak sering ngobrol sama kamu,
+        aku ngerasa nyaman. Aku suka cara kamu mikir dan sikap kamu.
+        Kalau boleh, aku pengen deket sama kamu lebih dari sekedar teman.
+        Gimana menurut kamu?
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="stiker2.gif" alt="Stiker kedua">
+      <p>
+        aku udah mikir lama sebelum ngomong ini. Aku suka sama kamu.
+        Bukan cuma karena paras, tapi karena kamu orangnya dewasa
+        dan bikin aku ngerasa tenang. Aku gak minta jawaban sekarang,
+        aku cuma pengen kamu tau perasaanku.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="stiker3.gif" alt="Stiker ketiga">
+      <p>
+        Aku nyaman banget kalo udah cerita sama kamu.
+        Lama-lama nyaman itu berubah jadi sayang.
+        Aku gak tau kamu ngerasain hal yang sama atau enggak,
+        tapi aku pengen nyoba. Boleh gak aku jadi orang
+        yang lebih deket buat kamu?
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="stiker4.gif" alt="Stiker keempat">
+      <p>
+        Kalau kamu juga ngerasa sama,
+        kita coba jalanin pelan-pelan aja 💗
+      </p>
+    </div>
+
+    <h2>Kenangan kecil kita 📸</h2>
+
+    <div class="gallery">
+      <img src="foto1.jpg" alt="Foto 1">
+      <img src="foto2.jpg" alt="Foto 2">
+      <img src="foto3.jpg" alt="Foto 3">
+      <img src="foto4.jpg" alt="Foto 4">
+    </div>
+
+    <div class="card">
+      <img src="stiker5.gif" alt="Stiker penutup">
+      <p>
+        Apapun jawaban kamu nanti,
+        makasih ya sudah hadir dan jadi seseorang
+        yang berarti buat aku. 💗
+      </p>
+    </div>
+
+    <div class="footer">
+      Dibuat khusus untuk Ulfahh dengan tulus 💕
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+function bukaPesan() {
+  document.getElementById("cover").style.display = "none";
+  document.getElementById("content").style.display = "block";
+
+  const music = document.getElementById("music");
+  music.play().catch(() => {});
+}
+
+function putarMusik() {
+  const music = document.getElementById("music");
+  const button = document.getElementById("musicButton");
+
+  if (music.paused) {
+    music.play();
+    button.innerHTML = "⏸️ Jeda Musik";
+  } else {
+    music.pause();
+    button.innerHTML = "🎵 Putar Musik";
+  }
+}
+</script>
+
+</body>
+  </html>
